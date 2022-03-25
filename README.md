@@ -6,6 +6,9 @@ composer require laravel/jetstream
 php artisan jetstream:install livewire
 npm install && npm run dev
 php artisan migrate:fresh --seed
+php artisan route:list --compact
+php artisan vendor:publish --tag=jetstream-views
+
 ```
 
 
