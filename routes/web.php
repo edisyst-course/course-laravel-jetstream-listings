@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
+
     Route::group(['middleware' => ['registration_completed']], function () {
         Route::get('/dashboard', function () {
             return view('dashboard');

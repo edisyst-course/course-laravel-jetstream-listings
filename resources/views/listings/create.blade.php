@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-jet-validation-errors class="mb-4" />
+            <x-jet-validation-errors class="mb-4" />   {{--GESTISCE TUTTI GLI ERRORI DI VALIDAZIONE--}}
 
             <form method="POST" action="{{ route('listings.store') }}" enctype="multipart/form-data">
                 @csrf
@@ -19,7 +19,8 @@
 
                 <div class="mt-4">
                     <x-jet-label for="description" value="{{ __('Description') }}" />
-                    <textarea id="price" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" name="description">{{ old('description') }}</textarea>
+                    <textarea id="description" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                              name="description">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="mt-4">
@@ -29,17 +30,23 @@
 
                 <div class="mt-4">
                     <x-jet-label for="photo1" value="{{ __('Photo 1') }}" />
-                    <input type="file" name="photo1" />
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <input type="file" name="photo1" class="opacity-10" />
+                    </div>
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="photo2" value="{{ __('Photo 2') }}" />
-                    <input type="file" name="photo2" />
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <input type="file" name="photo2" class="opacity-10" />
+                    </div>
                 </div>
 
                 <div class="mt-4">
                     <x-jet-label for="photo3" value="{{ __('Photo 3') }}" />
-                    <input type="file" name="photo3" />
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <input type="file" name="photo3" class="opacity-10" />
+                    </div>
                 </div>
 
                 <div class="mt-4">
