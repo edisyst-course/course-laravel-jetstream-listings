@@ -49,32 +49,33 @@
                     </div>
                 </div>
 
-                <div class="mt-4">
-                    <x-jet-label for="categories" value="{{ __('Categories') }}" />
-                    @foreach($categories as $category)
-                        <input type="checkbox" name="categories[]" value="{{ $category->id }}" />
-                        {{ $category->name }}
-                        <br />
-                    @endforeach
+                <div class="grid grid-rows-3 grid-flow-col gap-4">
+                    <div class="row-start-1 row-span-2 mt-4">
+                        <x-jet-label for="categories" value="{{ __('Categories') }}" />
+                        @foreach($categories as $category)
+                            <input type="checkbox" name="categories[]" value="{{ $category->id }}" class="box w-5 h-5 rounded border" />
+                            {{ $category->name }}
+                            <br />
+                        @endforeach
+                    </div>
+                    <div class="row-start-1 row-span-2 mt-4">
+                        <x-jet-label for="sizes" value="{{ __('Sizes') }}" />
+                        @foreach($sizes as $size)
+                            <input type="checkbox" name="sizes[]" value="{{ $size->id }}" class="box w-5 h-5 rounded border" />
+                            {{ $size->name }}
+                            <br />
+                        @endforeach
+                    </div>
+                    <div class="row-start-1 row-span-2 mt-4">
+                        <x-jet-label for="colors" value="{{ __('Colors') }}" />
+                        @foreach($colors as $color)
+                            <input type="checkbox" name="colors[]" value="{{ $color->id }}" class="box w-5 h-5 rounded border" />
+                            {{ $color->name }}
+                            <br />
+                        @endforeach
+                    </div>
                 </div>
 
-                <div class="mt-4">
-                    <x-jet-label for="sizes" value="{{ __('Sizes') }}" />
-                    @foreach($sizes as $size)
-                        <input type="checkbox" name="sizes[]" value="{{ $size->id }}" />
-                        {{ $size->name }}
-                        <br />
-                    @endforeach
-                </div>
-
-                <div class="mt-4">
-                    <x-jet-label for="colors" value="{{ __('Colors') }}" />
-                    @foreach($colors as $color)
-                        <input type="checkbox" name="colors[]" value="{{ $color->id }}" />
-                        {{ $color->name }}
-                        <br />
-                    @endforeach
-                </div>
 
                 <div class="flex items-center mt-6">
                     <x-jet-button>

@@ -28,3 +28,8 @@ In .env imposto `APP_URL=http://127.0.0.1:8000`
 
 `php artisan storage:link`
 
+
+# Policies
+Utili per gestire accessi/autorizzazioni a degli object. Per non ripetere IF nei vari file
+
+`php artisan make:policy ListingPolicy --model=Listing`

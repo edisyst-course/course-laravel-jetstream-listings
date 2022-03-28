@@ -24,9 +24,9 @@ class StoreListingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title'       => 'required',
             'description' => 'required',
-            'price' => 'required|numeric'
+            'price'       => 'required|numeric'
         ];
     }
 }

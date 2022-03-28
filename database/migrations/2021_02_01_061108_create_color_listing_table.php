@@ -14,8 +14,8 @@ class CreateColorListingTable extends Migration
     public function up()
     {
         Schema::create('color_listing', function (Blueprint $table) {
-            $table->foreignId('color_id')->constrained();
-            $table->foreignId('listing_id')->constrained();
+            $table->foreignId('color_id')->constrained()->onDelete('cascade');
+            $table->foreignId('listing_id')->constrained()->onDelete('cascade');
         });
     }
 

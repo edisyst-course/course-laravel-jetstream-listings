@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a7d1a9d-d836-4ba4-afdf-fdae18e29ee6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/prova_cf_validatore.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/listings.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/listings.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CitiesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CitiesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register-step2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register-step2.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ListingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ListingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreListingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreListingRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_01_055257_create_category_listing_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_01_055257_create_category_listing_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/listings/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/listings/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/jetstream/components/button.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/listings/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/listings/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,6 +227,8 @@
       <workItem from="1648309199234" duration="7610000" />
       <workItem from="1648385515573" duration="1486000" />
       <workItem from="1648402547374" duration="3551000" />
+      <workItem from="1648487496942" duration="576000" />
+      <workItem from="1648490779273" duration="4643000" />
     </task>
     <servers />
   </component>

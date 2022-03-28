@@ -54,30 +54,15 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Title
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Description
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Categories
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Sizes
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Colors
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            City
-                        </th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Price
-                        </th>
-                        <th class="relative px-6 py-3" colspan="2"></th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+{{--                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>--}}
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categories</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sizes</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Colors</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">City</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                        <th class="relative px-6 py-3" colspan="2">Actions</th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -86,23 +71,24 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <img src="{{ $listing->getFirstMediaUrl('listings', 'thumb') }}" />
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $listing->title }}
-                            <br />
-                            <a href="{{ route('messages.create') }}?listing_id={{ $listing->id }}" class="underline">Send a message</a></td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $listing->description }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $listing->title }}<br />
+                                <a href="{{ route('messages.create') }}?listing_id={{ $listing->id }}" class="underline">Send a message</a>
+                            </td>
+{{--                            <td class="px-6 py-4 whitespace-nowrap">{{ $listing->description }}</td>--}}
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @foreach ($listing->categories as $category)
-                                    {{ $category->name }}
+                                    {{ $category->name }} <br/>
                                 @endforeach
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @foreach ($listing->sizes as $size)
-                                    {{ $size->name }}
+                                    {{ $size->name }} <br/>
                                 @endforeach
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @foreach ($listing->colors as $color)
-                                    {{ $color->name }}
+                                    {{ $color->name }} <br/>
                                 @endforeach
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">

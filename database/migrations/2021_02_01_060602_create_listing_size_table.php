@@ -14,8 +14,8 @@ class CreateListingSizeTable extends Migration
     public function up()
     {
         Schema::create('listing_size', function (Blueprint $table) {
-            $table->foreignId('listing_id')->constrained();
-            $table->foreignId('size_id')->constrained();
+            $table->foreignId('listing_id')->constrained()->onDelete('cascade');
+            $table->foreignId('size_id')->constrained()->onDelete('cascade');
         });
     }
 

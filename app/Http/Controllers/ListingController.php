@@ -8,15 +8,13 @@ use App\Models\City;
 use App\Models\Color;
 use App\Models\Listing;
 use App\Models\Size;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class ListingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(): View
     {
         $listings = Listing::with(['categories', 'sizes', 'colors', 'user.city'])
             ->when(request('title'), function ($query) {
@@ -58,12 +56,8 @@ class ListingController extends Controller
             compact('listings', 'categories', 'sizes', 'colors', 'cities'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function create(): View
     {
         $categories = Category::all();
         $sizes = Size::all();
@@ -73,13 +67,8 @@ class ListingController extends Controller
             compact('categories', 'sizes', 'colors'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreListingRequest $request)
+
+    public function store(StoreListingRequest $request): RedirectResponse
     {
         $listing = auth()->user()->listings()->create($request->validated());
 
@@ -96,26 +85,16 @@ class ListingController extends Controller
         return redirect()->route('listings.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Listing $listing)
+
+    public function show(Listing $listing): Response
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Listing $listing)
+
+    public function edit(Listing $listing): View
     {
-        $this->authorize('update', $listing);
+        $this->authorize('update', $listing); // per proteggere il link diretto
         $listing->load('categories', 'sizes', 'colors');
 
         $media = $listing->getMedia('listings');
@@ -127,14 +106,8 @@ class ListingController extends Controller
             compact('listing', 'media', 'categories', 'sizes', 'colors'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function update(StoreListingRequest $request, Listing $listing)
+
+    public function update(StoreListingRequest $request, Listing $listing): RedirectResponse
     {
         $this->authorize('update', $listing);
 
@@ -153,13 +126,8 @@ class ListingController extends Controller
         return redirect()->route('listings.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Listing  $listing
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Listing $listing)
+
+    public function destroy(Listing $listing): RedirectResponse
     {
         $this->authorize('delete', $listing);
 
@@ -168,7 +136,8 @@ class ListingController extends Controller
         return redirect()->route('listings.index');
     }
 
-    public function deletePhoto($listingId, $photoId)
+
+    public function deletePhoto($listingId, $photoId): RedirectResponse
     {
         $listing = Listing::where('user_id', auth()->id())->findOrFail($listingId);
 
