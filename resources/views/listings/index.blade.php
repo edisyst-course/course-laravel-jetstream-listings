@@ -14,9 +14,11 @@
             <a href="{{ route('listings.create') }}"
                class="mb-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">{{ __('Add new listing') }}</a>
 
+            {{-- SEARCH FORM --}}
             <div class="mb-4">
                 <form method="GET" action="">
                     <input type="text" name="title" placeholder="Title" value="{{ request('title') }}" />
+
                     <select name="category">
                         <option value="">-- choose category --</option>
                         @foreach ($categories as $category)
@@ -24,6 +26,7 @@
                                     @if (request('category') == $category->id) selected @endif>{{ $category->name }}</option>
                         @endforeach
                     </select>
+
                     <select name="size">
                         <option value="">-- choose size --</option>
                         @foreach ($sizes as $size)
@@ -31,6 +34,7 @@
                                     @if (request('size') == $size->id) selected @endif>{{ $size->name }}</option>
                         @endforeach
                     </select>
+
                     <select name="color">
                         <option value="">-- choose color --</option>
                         @foreach ($colors as $color)
@@ -38,6 +42,7 @@
                                     @if (request('color') == $color->id) selected @endif>{{ $color->name }}</option>
                         @endforeach
                     </select>
+
                     <select name="city">
                         <option value="">-- choose city --</option>
                         @foreach ($cities as $city)
@@ -45,11 +50,13 @@
                                     @if (request('city') == $city->id) selected @endif>{{ $city->name }}</option>
                         @endforeach
                     </select>
+
                     @livewire('listing-saved-checkbox')
                     <button type="submit" class="mb-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">Search</button>
                 </form>
             </div>
 
+            {{-- LISTINGS TABLE --}}
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">

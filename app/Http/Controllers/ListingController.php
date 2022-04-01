@@ -17,21 +17,21 @@ class ListingController extends Controller
     public function index(): View
     {
         $listings = Listing::with(['categories', 'sizes', 'colors', 'user.city'])
-            ->when(request('title'), function ($query) {
+            ->when(request('title'), function ($query) {    // se nella request (nella querystring) c'è title
                 $query->where('title', 'LIKE', '%'.request('title').'%');
             })
             ->when(request('category'), function ($query) {
-                $query->whereHas('categories', function ($query2) {
+                $query->whereHas('categories', function ($query2) { // ManyToMany Relationship
                     $query2->where('id', request('category'));
                 });
             })
             ->when(request('size'), function ($query) {
-                $query->whereHas('sizes', function ($query2) {
+                $query->whereHas('sizes', function ($query2) { // ManyToMany Relationship
                     $query2->where('id', request('size'));
                 });
             })
             ->when(request('color'), function ($query) {
-                $query->whereHas('colors', function ($query2) {
+                $query->whereHas('colors', function ($query2) { // ManyToMany Relationship
                     $query2->where('id', request('color'));
                 });
             })
@@ -45,7 +45,7 @@ class ListingController extends Controller
                     $query2->where('id', auth()->id());
                 });
             })
-            ->paginate(5)->withQueryString();
+            ->paginate(5)->withQueryString(); // senza si resettano i search parameter al cambio pagina
 
         $categories = Category::all();
         $sizes = Size::all();
@@ -78,7 +78,7 @@ class ListingController extends Controller
             }
         }
 
-        $listing->categories()->attach($request->categories);
+        $listing->categories()->attach($request->categories); // scrivo così per "popolare" la relationship
         $listing->sizes()->attach($request->sizes);
         $listing->colors()->attach($request->colors);
 
@@ -95,7 +95,7 @@ class ListingController extends Controller
     public function edit(Listing $listing): View
     {
         $this->authorize('update', $listing); // per proteggere il link diretto
-        $listing->load('categories', 'sizes', 'colors');
+        $listing->load('categories', 'sizes', 'colors'); // carico le relationship che servono nella view
 
         $media = $listing->getMedia('listings');
         $categories = Category::all();
@@ -119,7 +119,7 @@ class ListingController extends Controller
             }
         }
 
-        $listing->categories()->sync($request->categories);
+        $listing->categories()->sync($request->categories); // aggiorno le relationship
         $listing->sizes()->sync($request->sizes);
         $listing->colors()->sync($request->colors);
 

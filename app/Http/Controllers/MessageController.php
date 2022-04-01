@@ -10,22 +10,12 @@ use Illuminate\Support\Facades\Notification;
 
 class MessageController extends Controller
 {
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('messages.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $request->validate(['message' => 'required']);
@@ -36,13 +26,15 @@ class MessageController extends Controller
         $sentMessages = Message::where('user_id', auth()->id())
             ->where('created_at', '>', now()->subMinute())
             ->count();
-        if ($sentMessages < 5) {
+
+        if ($sentMessages < 5) { // prevent spam
             Message::create([
                 'user_id' => auth()->id(),
-                'listing_id' => $request->listing_id,
+                'listing_id' => $request->listing_id, // passato come hidden nel form
                 'message_text' => $request->message,
             ]);
 
+            // Send message
             $message = [
                 'name' => auth()->user()->name,
                 'email' => auth()->user()->email,
@@ -54,8 +46,7 @@ class MessageController extends Controller
                 ->notify(new ListingMessageNotification($message));
         }
 
+        // restituisco l'alert di successo anche se la mail non viene realmente mandata. Difesa dagli hacker
         return redirect()->route('listings.index')->with('message', 'Message sent successfully');
-
-        // Send message
     }
 }

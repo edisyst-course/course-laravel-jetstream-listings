@@ -7,7 +7,8 @@ use Livewire\Component;
 class ListingSavedCheckbox extends Component
 {
     protected $listeners = [
-        'listingSaved' => 'render'
+        'listingSaved' => 'render',
+//        'evento lanciato' => 'metodo triggerato'
     ];
 
     public function render()
