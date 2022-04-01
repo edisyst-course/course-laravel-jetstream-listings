@@ -49,9 +49,11 @@ class ListingMessageNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line($this->name . ' ('.$this->email.') has sent you a message about ' . $this->listingTitle)
-                    ->line($this->messageText)
-                    ->line('Thank you for using our application!');
+            ->line('Un utente ha chiesto informazioni su un tuo prodotto')
+            ->line('**Utente**: ' . $this->name)
+            ->line('**Prodotto**: ' . $this->listingTitle)
+            ->line('**Messaggio**: ' . $this->messageText)
+            ->line('*Grazie per aver utilizzato il nostro servizio!*');
     }
 
     /**
